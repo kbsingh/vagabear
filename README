@@ -1,0 +1,3 @@
+A simple script that assumes a Minimal install CentOS-7/x86_64 machine is used as the base, and this script is run as root. It will setup vagrant, startup the libvirt service, grab a vagrant box, run the baseline acceptance suite.
+
+Warning: the test suite can take upto 20 minutes to run on a baremetal machine ( i3 quad core ), doing this inside a VM is going to almost certainly take longer.
