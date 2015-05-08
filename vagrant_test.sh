@@ -8,7 +8,7 @@ if [ $UpdtPkgs -gt 4 ]; then
     echo 'More than 4 packages due an update!'
     exit 1
 else
-    vagrant ssh -c "cd sync; ./runtests.sh "
+    vagrant ssh -c "cd sync; sudo ./runtests.sh "
     # the $? check here isnt going to work since it will be the ssh exit, not the
     # script exit 
     if [ $? -ne 0 ]; then
