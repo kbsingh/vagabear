@@ -3,19 +3,12 @@
 cd ~/sync/
 vagrant init atomicapp/dev
 vagrant up
-UpdtPkgs=$(vagrant ssh -c "sudo yum -d0 list updates | wc -l")
+UpdtPkgs=$(vagrant ssh -c "sudo yum clean all && sudo yum -d0 list updates | wc -l")
 echo 'Updates backlog :' ${UpdtPkgs} 
 #if [ $UpdtPkgs -gt 10 ]; then
 #    echo 'More than 10 packages due an update!'
 #    exit 1
 #else
     vagrant ssh -c 'cd sync; sudo env "PATH=$PATH" ./runtests.sh'
-    # the $? check here isnt going to work since it will be the ssh exit, not the
-    # script exit 
-    if [ $? -ne 0 ]; then
-      echo 't_functional failed'
-      exit 2
-    else
-      exit 0
-    fi
+    exit $?
 #fi

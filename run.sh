@@ -39,8 +39,5 @@ if [ $? -eq 0 ]; then
   git clone https://github.com/CentOS/sig-core-t_functional ~/sync
   chmod u+x ./vagrant_test.sh
   scl enable vagrant1 ./vagrant_test.sh
-  if [ $? -ne 0 ]; then
-    echo 'Failed'
-    exit 1
-  fi
+  exit $?
 fi
