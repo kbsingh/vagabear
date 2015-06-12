@@ -37,7 +37,7 @@ if [ $? -eq 0 ]; then
   service libvirtd start
   # we likely dont need to run the rest as root
   git clone https://github.com/CentOS/sig-core-t_functional ~/sync
-  cp Customfile ~/sync/
+  cp Vagrantfile ~/sync/
   chmod u+x ./vagrant_test.sh
   scl enable vagrant1 ./vagrant_test.sh
   exit $?
