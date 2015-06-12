@@ -1,4 +1,0 @@
-config.vm.provider "libvirt" do |v|
-  v.memory = 4096
-  v.cpus = 4
-end
