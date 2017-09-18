@@ -8,30 +8,11 @@
 
 yum -y upgrade
 
-cat > /etc/yum.repos.d/vagrant.repo <<- EOM
+yum install centos-release-scl
 
-[jstribny-vagrant1]
-name=Copr repo for vagrant1 owned by jstribny
-baseurl=https://copr-be.cloud.fedoraproject.org/results/jstribny/vagrant1/epel-7-x86_64/
-gpgcheck=1
-gpgkey=https://copr-be.cloud.fedoraproject.org/results/jstribny/vagrant1/pubkey.gpg
-enabled=1
-
-[ruby200-copr]
-name=ruby200-copr
-baseurl=http://copr-be.cloud.fedoraproject.org/results/rhscl/ruby200-el7/epel-7-x86_64/
-enabled=1
-gpgcheck=0
-
-[ror40-copr]
-name=ror40-copr
-baseurl=http://copr-be.cloud.fedoraproject.org/results/rhscl/ror40-el7/epel-7-x86_64/
-enabled=1
-gpgcheck=0
-
-EOM
-
-yum -y install vagrant1 rsync
+yum -y install sclo-vagrant1-vagrant-libvirt \
+               rsync qemu-kvm qemu-kvm-tools \
+               qemu-img
 
 if [ $? -eq 0 ]; then
   service libvirtd start
